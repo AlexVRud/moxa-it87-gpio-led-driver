@@ -1,3 +1,9 @@
+moxa-it87-gpio-led-driver (1.0.1) stretch; urgency=medium
+
+  * feat: add NGS DA-820C/DA-682C/DA-681C series support 
+
+ -- Elvis Yao (姚家瑋) <ElvisCW.Yao@moxa.com>  Mon, 27 Apr 2020 11:29:07 +0800
+
 moxa-it87-gpio-led-driver (1.0.0) stretch; urgency=medium
 
   * Initial release
