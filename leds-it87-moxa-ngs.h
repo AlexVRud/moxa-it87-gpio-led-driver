@@ -7,6 +7,7 @@ enum it87xx_board {
 	IT87XX_BOARD_MOXA_DA_820C,
 	IT87XX_BOARD_MOXA_DA_682C,
 	IT87XX_BOARD_MOXA_DA_681C,
+	IT87XX_BOARD_MOXA_WHL_CORE_TEST,
 
 	IT87XX_BOARD_UNKNOWN,
 	IT87XX_BOARD_NO
@@ -69,6 +70,9 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL3-H-T"},
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL3-HH-T"},
 
+	/* Whiskeylake test */
+	{{IT87XX_BOARD_MOXA_WHL_CORE_TEST, "Moxa WHL-CORE-TEST"}, "WHL-CORE-TEST"},
+	
 	{{0}, 0},
 };
 
