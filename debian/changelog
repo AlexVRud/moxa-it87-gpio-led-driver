@@ -1,0 +1,5 @@
+moxa-it87-gpio-led-driver (1.0.0+deb10) buster; urgency=medium
+
+  * Initial release
+
+ -- Wayne W Wei <waynew.wei@moxa.com>  Tue, 05 May 2020 03:58:12 +0800
