@@ -88,6 +88,14 @@ static struct gpio_led it87xx_leds_moxa_da_681c[] = {
 	IT87XX_GPIO_LED("DA681C:GREEN:PRG8", 503, 1, LEDS_GPIO_DEFSTATE_OFF),
 };
 
+/* WhiskeyLake Core Test */
+static struct gpio_led it87xx_leds_moxa_whl[] = {
+	IT87XX_GPIO_LED("WHL:GREEN:PRG1", 155, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("WHL:GREEN:PRG2", 156, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("WHL:GREEN:PRG3", 158, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("WHL:GREEN:PRG4", 159, 1, LEDS_GPIO_DEFSTATE_OFF),
+};
+
 /************************************************
  * Initial
  ************************************************/
@@ -166,6 +174,9 @@ static int __init it87xx_leds_init(void)
 		break;
 	case IT87XX_BOARD_MOXA_DA_681C:
 		it87xx_set_pdata(it87xx_leds_moxa_da_681c);
+		break;
+	case IT87XX_BOARD_MOXA_WHL_CORE_TEST:
+		it87xx_set_pdata(it87xx_leds_moxa_whl);
 		break;
 	default:
 		return -ENODEV;
