@@ -154,8 +154,11 @@ static int __init it87xx_leds_init(void)
 
 	ret = request_module(IT87XX_GPIO_DRIVER);
 
-	if (ret)
+	if (ret) {
+		pr_err("request_module(%s) failed: %d\n",
+			IT87XX_GPIO_DRIVER, ret);
 		return ret;
+	}
 
 	device = it87xx_board_find();
 
