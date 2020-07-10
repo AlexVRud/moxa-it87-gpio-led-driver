@@ -77,6 +77,15 @@ static struct gpio_led it87xx_leds_moxa_da_682c[] = {
 	IT87XX_GPIO_LED("DA682C:GREEN:PRG8", 503, 1, LEDS_GPIO_DEFSTATE_OFF),
 };
 
+static struct gpio_led it87xx_leds_moxa_da_681a[] = {
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG1", 184, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG2", 185, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG3", 186, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG4", 187, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG5", 188, 1, LEDS_GPIO_DEFSTATE_OFF),
+	IT87XX_GPIO_LED("DA681A:GREEN:PRG6", 189, 1, LEDS_GPIO_DEFSTATE_OFF),
+};
+
 static struct gpio_led it87xx_leds_moxa_da_681c[] = {
 	IT87XX_GPIO_LED("DA681C:GREEN:PRG1", 496, 1, LEDS_GPIO_DEFSTATE_OFF),
 	IT87XX_GPIO_LED("DA681C:GREEN:PRG2", 497, 1, LEDS_GPIO_DEFSTATE_OFF),
@@ -174,6 +183,9 @@ static int __init it87xx_leds_init(void)
 		break;
 	case IT87XX_BOARD_MOXA_DA_682C:
 		it87xx_set_pdata(it87xx_leds_moxa_da_682c);
+		break;
+	case IT87XX_BOARD_MOXA_DA_681A:
+		it87xx_set_pdata(it87xx_leds_moxa_da_681a);
 		break;
 	case IT87XX_BOARD_MOXA_DA_681C:
 		it87xx_set_pdata(it87xx_leds_moxa_da_681c);
