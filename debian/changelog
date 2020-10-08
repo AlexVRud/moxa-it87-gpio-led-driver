@@ -1,3 +1,9 @@
+moxa-it87-gpio-led-driver (1.1.0+deb9) stretch; urgency=medium
+
+  * feat: update depends on linux kernel 4.9.0-13-amd64
+
+ -- Elvis Yao (姚家瑋) <ElvisCW.Yao@moxa.com>  Thu, 08 Oct 2020 15:19:04 +0800
+
 moxa-it87-gpio-led-driver (1.0.1) stretch; urgency=medium
 
   * feat: add NGS DA-820C/DA-682C/DA-681C series support 
