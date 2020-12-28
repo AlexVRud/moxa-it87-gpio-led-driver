@@ -1,2 +1,2 @@
-leds-it87-moxa-ngs.ko /lib/modules/4.19.0-9-amd64/kernel/drivers/leds
+leds-it87-moxa-ngs.ko /lib/modules/4.19.0-13-amd64/kernel/drivers/leds
 leds-it87-moxa-ngs.conf /usr/lib/modules-load.d
