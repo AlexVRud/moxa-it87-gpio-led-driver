@@ -1,3 +1,11 @@
+moxa-it87-gpio-led-driver (1.2.1+deb10) buster; urgency=medium
+
+  [Fixed]
+  * Change DA-681A (CN) model name as:
+    'DA-681A-I-DPP-WL1 (CN)' and 'DA-681A-I-SP-WL1 (CN)'.
+
+ -- Elvis Yao (姚家瑋) <ElvisCW.Yao@moxa.com>  Tue, 19 Jan 2021 10:41:29 +0800
+
 moxa-it87-gpio-led-driver (1.2.0+deb10) buster; urgency=medium
 
   [Changed]
