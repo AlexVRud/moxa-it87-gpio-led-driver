@@ -66,8 +66,8 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-KL7-HH-T"},
 
 	/* DA-681A CN Series */
-	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA-681A-I-SP (CN)"},
-	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA-681A-I-DPP (CN)"},
+	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA-681A-I-DPP-WL1 (CN)"},
+	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA-681A-I-SP-WL1 (CN)"},
 
 	/* DA-681C Series */
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL1-H-T"},
