@@ -15,6 +15,10 @@ enum it87xx_board {
 };
 
 #define IT87XX_BOARD_MAX_NAME 30
+#define BUFF_SZ 64
+#define NAME_LEN 10
+#define NAME_START 22
+#define NAME_END 32
 
 struct it87xx_board_type {
 	enum it87xx_board board;
@@ -31,7 +35,7 @@ struct it87xx_board_store {
 	char name[IT87XX_BOARD_MAX_NAME];
 };
 
-static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
+static const struct it87xx_board_type_list it87xx_board_type2_list_models[] = {
 	/* V Series */
 	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-E1-T"},
 	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-E1-T-LX"},
@@ -42,6 +46,7 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-E4-T"},
 	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-E4-W-T"},
 	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-E4-W-T-LX"},
+	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201-T (CTO)"},
 
 	/* DA-820C Series */
 	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C-KL3-H-T"},
@@ -54,6 +59,8 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C-KL7-HH"},
 	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C-KLXM-H"},
 	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C-KLXM-HH"},
+	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C (CTO)"},
+	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA-820C-T (CTO)"},
 
 	/* DA-682C Series */
 	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-KL1-H-T"},
@@ -64,6 +71,7 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-KL5-HH-T"},
 	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-KL7-H-T"},
 	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-KL7-HH-T"},
+	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA-682C-T (CTO)"},
 
 	/* DA-681A CN Series */
 	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA-681A-I-SP (CN)"},
@@ -74,10 +82,30 @@ static const struct it87xx_board_type_list it87xx_board_type_list_models[] = {
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL1-HH-T"},
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL3-H-T"},
 	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-KL3-HH-T"},
+	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA-681C-T (CTO)"},
 
 	/* Whiskeylake test */
 	{{IT87XX_BOARD_MOXA_WHL_CORE_TEST, "Moxa WHL-CORE-TEST"}, "WHL-CORE-TEST"},
 	
+	{{0}, 0},
+};
+
+static const struct it87xx_board_type_list it87xx_board_type12_list_models[] = {
+	/* V-2201 Series */
+	{{IT87XX_BOARD_MOXA_V_2201, "Moxa V2201"}, "V2201"},
+
+	/* DA-820C Series */
+	{{IT87XX_BOARD_MOXA_DA_820C, "Moxa DA820C"}, "DA820C"},
+
+	/* DA-682C Series */
+	{{IT87XX_BOARD_MOXA_DA_682C, "Moxa DA682C"}, "DA682C"},
+
+	/* DA-681A CN Series */
+	{{IT87XX_BOARD_MOXA_DA_681A, "Moxa DA681A"}, "DA681A"},
+
+	/* DA-681C Series */
+	{{IT87XX_BOARD_MOXA_DA_681C, "Moxa DA681C"}, "DA681C"},
+
 	{{0}, 0},
 };
 
