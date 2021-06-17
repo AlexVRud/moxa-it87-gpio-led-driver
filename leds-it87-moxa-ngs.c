@@ -110,12 +110,68 @@ static struct gpio_led it87xx_leds_moxa_whl[] = {
  ************************************************/
 
 static struct gpio_led_platform_data it87xx_leds_pdata;
+
+struct dmi_read_state {
+	char *buf;
+	loff_t pos;
+	size_t count;
+	int entry_length;
+};
+
 static void it87xx_leds_device_pdata_release(struct device *dev)
 {
 	/* Needed to silence this message:
 	 * Device 'xxx' does not have a release() function, it is broken and
 	 * must be fixed
 	 */
+}
+
+static size_t dmi_entry_length(const struct dmi_header *dh)
+{
+	const char *p = (const char *)dh;
+	p += dh->length;
+	while (p[0] || p[1])
+		p++;
+	return 2 + p - (const char *)dh;
+}
+
+static void get_dmi_sysconf(const struct dmi_header *dh, void *private)
+{
+	struct dmi_read_state *state = (struct dmi_read_state*)private;
+	if (dh->type == DMI_ENTRY_SYSCONF) {
+		size_t entry_length = dmi_entry_length(dh);
+		pr_debug("Handle %d, DMI type %d, %d bytes", dh->handle, dh->type, dh->length);
+		memory_read_from_buffer(state->buf, state->count, &state->pos, dh, entry_length);
+		state->entry_length = entry_length;
+	}
+}
+
+const char *get_dmi_sysconf_name(void)
+{
+	char buf[BUFF_SZ];
+	static char m_name_buf[NAME_LEN];
+	int i = 0, j = 0;
+	struct dmi_read_state state = {
+		.buf = buf,
+		.pos = 0,
+		.count = BUFF_SZ,
+		0,
+	};
+
+	memset(&buf, 0, BUFF_SZ);
+	memset(&m_name_buf, 0, NAME_LEN);
+
+	dmi_walk(get_dmi_sysconf, (void*)&state);
+	for (i = NAME_START; i < NAME_END; i++) {
+		if (buf[i] != ' ') {
+			m_name_buf[j] = buf[i];
+			j++;
+		}
+	}
+
+	pr_debug("Get type 12 model name: '%s'\n", m_name_buf);
+
+	return m_name_buf;
 }
 
 static struct platform_device it87xx_leds_dev = {
@@ -142,9 +198,22 @@ static __init const struct it87xx_board_type *it87xx_board_find(void)
 	const struct it87xx_board_type_list *device;
 	const char *model;
 
+	/* To find model name from DMI type 2 */
 	model = dmi_get_system_info(DMI_BOARD_NAME);
-	pr_debug("model = %s\n", model);
-	for (device = it87xx_board_type_list_models; device->model_name;
+	pr_debug("type 2 model = %s\n", model);
+	for (device = it87xx_board_type2_list_models; device->model_name;
+	     device++) {
+		pr_debug("device->model_name = %s\n", device->model_name);
+		if (!strcmp(model, device->model_name)) {
+			pr_info("Found board: %s\n", device->model_name);
+			return &device->board;
+		}
+	}
+
+	/* if not found, to find model name from DMI type 12 option 2 */
+	model =  get_dmi_sysconf_name();
+	pr_debug("type 12 option 2 model = %s\n", model);
+	for (device = it87xx_board_type12_list_models; device->model_name;
 	     device++) {
 		pr_debug("device->model_name = %s\n", device->model_name);
 		if (!strcmp(model, device->model_name)) {
