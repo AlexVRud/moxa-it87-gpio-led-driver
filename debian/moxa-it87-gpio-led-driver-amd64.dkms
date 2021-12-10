@@ -1,0 +1,7 @@
+PACKAGE_NAME="moxa-it87-gpio-led-driver"
+PACKAGE_VERSION="#MODULE_VERSION#"
+BUILT_MODULE_NAME[0]="leds-it87-moxa-ngs"
+DEST_MODULE_LOCATION[0]="/updates/dkms/"
+AUTOINSTALL="YES"
+REMAKE_INITRD="NO"
+

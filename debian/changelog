@@ -1,3 +1,9 @@
+moxa-it87-gpio-led-driver (1.2.1+deb11+dkms) UNRELEASED; urgency=medium
+
+  * New branch for Debian 11 and DKMS 
+
+ -- Alexander Rudalev <a.rudalev@ens.ru>  Fri, 10 Dec 2021 16:45:13 +0300
+
 moxa-it87-gpio-led-driver (1.2.1+deb10) buster; urgency=medium
 
   [Fixed]
